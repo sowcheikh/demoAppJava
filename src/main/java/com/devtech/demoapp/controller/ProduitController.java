@@ -25,6 +25,11 @@ public class ProduitController {
         return produitService.lire();
     }
 
+    @GetMapping(EndpointApp.READ_ONE_PRODUIT)
+    public Produit readOneProduct(@PathVariable Long id) {
+        return produitService.lireUnProduit(id);
+    }
+
     @PutMapping(EndpointApp.PUT_PRODUIT)
     public Produit update(@RequestBody Produit produit, @PathVariable Long id) {
         return produitService.modifier(id, produit);

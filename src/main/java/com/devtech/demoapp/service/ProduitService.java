@@ -10,6 +10,8 @@ public interface ProduitService {
 
     List<Produit> lire();
 
+    Produit lireUnProduit(Long id);
+
     Produit modifier(Long id, Produit produit);
 
     String supprimer(Long id);

@@ -23,12 +23,16 @@ public class ProduitServiceImpl implements ProduitService{
     }
 
     @Override
+    public Produit lireUnProduit(Long id) {
+        return produitRepository.findById(id).get();
+    }
+
+    @Override
     public Produit modifier(Long id, Produit produit) {
         return produitRepository.findById(id).map(
                 p -> {
-                 p.setNom(produit.getNom());
-                 p.setDescription(produit.getDescription());
-                 p.setPrix(produit.getPrix());
+                 p.setNomProduit(produit.getNomProduit());
+                 p.setPrixProduit(produit.getPrixProduit());
                  return produitRepository.save(p);
                 }).orElseThrow(() -> new RuntimeException("produit non trouvé"));
     }
