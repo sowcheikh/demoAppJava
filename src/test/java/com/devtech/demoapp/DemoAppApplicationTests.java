@@ -1,5 +1,6 @@
 package com.devtech.demoapp;
 
+import com.devtech.demoapp.modele.Categorie;
 import com.devtech.demoapp.modele.Produit;
 import com.devtech.demoapp.repository.ProduitRepository;
 import org.junit.jupiter.api.Test;
@@ -36,7 +37,7 @@ class DemoAppApplicationTests {
 	@Test
 	public void testDeleteProduit()
 	{
-		produitRepository.deleteById(2L);;
+		produitRepository.deleteById(2L);
 	}
 	@Test
 	public void testListerTousProduits()
@@ -66,6 +67,58 @@ class DemoAppApplicationTests {
 			System.out.println(p);
 		}
 	}
+	@Test
+	public void testFindByNomPrix()
+	{
+		List<Produit> prods = produitRepository.findByNomPrix("test", 100.0);
+		for (Produit p : prods)
+		{
+			System.out.println(p);
+		}
+	}
+	@Test
+	public void testFindByCategorie()
+	{
+		Categorie cat = new Categorie();
+		cat.setId(1L);
+		List<Produit> prods = produitRepository.findByCategorie(cat);
+		for (Produit p : prods)
+		{
+			System.out.println(p);
+		}
+	}
+	@Test
+	public void findByCategorieIdCat()
+	{
+		List<Produit> prods = produitRepository.findByCategorieId(1L);
+		for (Produit p : prods)
+		{
+			System.out.println(p);
+		}
+	}
+	@Test
+	public void testFindByOrderByNomProduitAsc()
+	{
+		List<Produit> prods =
+				produitRepository.findByOrderByNomProduitAsc();
+		for (Produit p : prods)
+		{
+			System.out.println(p);
+		}
+	}
+	@Test
+	public void testTrierProduitsNomsPrix()
+	{
+		List<Produit> prods = produitRepository.trierProduitsNomsPrix();
+		for (Produit p : prods)
+		{
+			System.out.println(p);
+		}
+	}
+
+
+
+
 
 
 }
